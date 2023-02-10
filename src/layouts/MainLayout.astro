@@ -1,0 +1,39 @@
+---
+import Background from '../components/Background.vue';
+import Header from '../components/Header.vue';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<!-- <link rel="stylesheet" href="https://use.typekit.net/soy0jkj.css" /> -->
+		<meta name="generator" content={Astro.generator} />
+		<title>jimmy's portfolio</title>
+	</head>
+	<body>
+		<Background />
+		<div class="relative">
+			<Header client:load />
+			<slot />
+		</div>
+	</body>
+</html>
+
+<style is:global>
+	html {
+		@apply text-white bg-black;
+	}
+
+	.glow::before {
+		@apply content-default absolute inset-0;
+		background: radial-gradient(var(--radius) circle at var(--x) var(--y),hsla(0,0%,100%,.5),transparent 40%);
+		border-radius: inherit;
+	}
+
+	.card .card-header {
+		@apply text-sm font-bold mt-1;
+	}
+</style>
